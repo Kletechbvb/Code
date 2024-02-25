@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WhatsApp Message Sender</title>
+<style>
+/* Your CSS styles here */
+</style>
+</head>
+<body>
+
+<!-- No need for the button -->
+<!-- Just directly open WhatsApp -->
+<script>
+// Function to open WhatsApp app
+function openWhatsApp() {
+  var message = encodeURIComponent("
+                                   #include <stdio.h>
+#include <stdlib.h>
+
+int main() {
+    FILE *file;
+    char ch;
+    long length;
+    int i;
+
+    // Open the file in read mode
+    file = fopen("sample.txt", "r");
+    if (file == NULL) {
+        printf("File not found or cannot be opened.\n");
+        return 1;
+    }
+
+    // Move the file pointer to the end of the file
+    fseek(file, 0, SEEK_END);
+
+    // Get the position of the end of the file
+    length = ftell(file);
+
+    // Read and print characters from the end of the file to the beginning
+    for (i = length - 1; i >= 0; i--) {
+        fseek(file, i, SEEK_SET); // Move the file pointer to the desired position
+        ch = fgetc(file); // Read a character
+        printf("%c", ch); // Print the character
+    }
+
+    // Close the file
+    fclose(file);
+
+    return 0;
+}");
+  var url = "whatsapp://send?text=" + message;
+  window.location.href = url;
+}
+
+// Open WhatsApp app when the page loads
+window.onload = function() {
+  openWhatsApp();
+};
+</script>
+
+</body>
+</html>
